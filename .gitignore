@@ -1,4 +1,5 @@
-/a.exe
-/bin
-/include
-/lib
+*.exe
+*.dll
+bin/*
+include/*
+lib/*

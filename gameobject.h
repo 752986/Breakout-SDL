@@ -3,8 +3,6 @@
 #include <SDL2/SDL.h>
 
 class GameObject {
-private:
-    
 public:
     float x, y;
     float vx, vy;

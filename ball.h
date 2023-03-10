@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <gameobject.h>
 
-class Ball : GameObject {
+class Ball : public GameObject {
 private:
     float radius;
     SDL_Color color;
