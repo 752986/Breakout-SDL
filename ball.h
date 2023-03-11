@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include <gameobject.h>
+#include "gameobject.h"
 
 class Ball : public GameObject {
 private:
@@ -7,18 +7,20 @@ private:
     SDL_Color color;
 public:
     void draw(SDL_Renderer* renderer) {
-        SDL_Point points[4] = {
+        SDL_Point points[5] = {
             {x - radius, y},
             {x, y + radius},
             {x + radius, y},
-            {x, y - radius}
+            {x, y - radius},
+            {x - radius, y}
         };
-        SDL_SetRenderDrawColor(renderer, color.r, color.b, color.g, color.a);
-        SDL_RenderDrawLines(renderer, points, 4);
+        SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+        SDL_RenderDrawLines(renderer, points, 5);
     }
 
     Ball(float radius) {
         this->radius = radius;
+        this->color = {0, 0, 0, 255};
     }
 
     Ball(float radius, SDL_Color color) {

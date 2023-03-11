@@ -1,8 +1,8 @@
 #define SDL_MAIN_HANDLED
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
 
-#include <gameobject.h>
-#include <ball.h>
+#include "gameobject.h"
+#include "ball.h"
 
 #include <vector>
 
@@ -16,7 +16,7 @@ int main() {
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, NULL);
 
     std::vector<GameObject*> game_objects;
-    Ball* ball = new Ball(10);
+    Ball* ball = new Ball(5);
     ball->x = 100;
     ball->y = 100;
     game_objects.push_back(ball);
@@ -32,7 +32,7 @@ int main() {
         }
         
         // clear the screen
-        SDL_SetRenderDrawColor(renderer, 100, 200, 200, 0);
+        SDL_SetRenderDrawColor(renderer, 50, 70, 100, 255);
         SDL_RenderClear(renderer);
 
         // update everything

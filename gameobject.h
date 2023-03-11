@@ -1,19 +1,19 @@
 #pragma once
 
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
 
 class GameObject {
 public:
     float x, y;
     float vx, vy;
-    bool should_delete;
+    bool should_delete = false;
 
-    void update(float delta) {
+    virtual void update(float delta) {
         x += vx * delta;
         y += vy * delta;
     }
 
-    void draw(SDL_Renderer* renderer) {}
+    virtual void draw(SDL_Renderer* renderer) {}
 
     GameObject() {}
     
