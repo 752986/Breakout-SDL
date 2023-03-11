@@ -3,24 +3,24 @@
 
 class Ball : public GameObject {
 private:
-    float radius;
-    SDL_Color color;
+    float radius = 10;
+    SDL_Color color = {0, 0, 0, 255};
+    SDL_FPoint shape[5];
 public:
     void draw(SDL_Renderer* renderer) {
-        SDL_Point points[5] = {
-            {x - radius, y},
-            {x, y + radius},
-            {x + radius, y},
-            {x, y - radius},
-            {x - radius, y}
-        };
+        // update vertices
+        shape[0] = {x - radius, y};
+        shape[1] = {x, y + radius};
+        shape[2] = {x + radius, y};
+        shape[3] = {x, y - radius};
+        shape[4] = {x - radius, y};
+
         SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-        SDL_RenderDrawLines(renderer, points, 5);
+        SDL_RenderDrawLinesF(renderer, shape, 5);
     }
 
     Ball(float radius) {
         this->radius = radius;
-        this->color = {0, 0, 0, 255};
     }
 
     Ball(float radius, SDL_Color color) {

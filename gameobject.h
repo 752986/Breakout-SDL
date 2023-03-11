@@ -4,8 +4,8 @@
 
 class GameObject {
 public:
-    float x, y;
-    float vx, vy;
+    float x, y = 0.0;
+    float vx, vy = 0.0;
     bool should_delete = false;
 
     virtual void update(float delta) {

@@ -12,8 +12,8 @@
 int main() {
     SDL_Init(SDL_INIT_EVERYTHING);
 
-    SDL_Window* window = SDL_CreateWindow("Breakout", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, NULL);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, NULL);
+    SDL_Window* window = SDL_CreateWindow("Breakout", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
 
     std::vector<GameObject*> game_objects;
     Ball* ball = new Ball(5);
@@ -36,13 +36,13 @@ int main() {
         SDL_RenderClear(renderer);
 
         // update everything
-        for (int i = 0; i < game_objects.size(); i++) {
-            game_objects[i]->update(0.01);
+        for (GameObject* object : game_objects) {
+            object->update(0.01);
         }
 
         // draw everything
-        for (int i = 0; i < game_objects.size(); i++) {
-            game_objects[i]->draw(renderer);
+        for (GameObject* object : game_objects) {
+            object->draw(renderer);
         }
 
         SDL_RenderPresent(renderer);
